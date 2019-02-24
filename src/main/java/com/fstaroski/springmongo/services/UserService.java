@@ -7,14 +7,20 @@ import org.springframework.stereotype.Service;
 
 import com.fstaroski.springmongo.domain.User;
 import com.fstaroski.springmongo.repository.UserRepository;
+import com.fstaroski.springmongo.services.exception.ObjectNotFoundException;
 
 @Service
 public class UserService {
-	
+
 	@Autowired
 	private UserRepository repository;
-	
-	public List<User> findAll () {
+
+	public List<User> findAll() {
 		return repository.findAll();
+	}
+
+	public User findById(String id) {
+		return repository.findById(id)
+				.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado. id: " + id));
 	}
 }

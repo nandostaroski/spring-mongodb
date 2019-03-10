@@ -7,6 +7,8 @@ import com.fstaroski.springmongo.domain.Post;
 import com.fstaroski.springmongo.repository.PostRepository;
 import com.fstaroski.springmongo.services.exception.ObjectNotFoundException;
 
+import java.util.List;
+
 @Service
 public class PostService {
 
@@ -16,5 +18,9 @@ public class PostService {
 	public Post findById(String id) {
 		return repository.findById(id)
 				.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado. id: " + id));
+	}
+
+	public List<Post> findByTitle(String text) {
+		return repository.findByTitleContainingIgnoreCase(text);
 	}
 }

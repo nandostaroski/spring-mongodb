@@ -1,15 +1,14 @@
 package com.fstaroski.springmongo.domain;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
+import com.fstaroski.springmongo.dto.AuthorDTO;
 import com.fstaroski.springmongo.dto.CommentDTO;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import com.fstaroski.springmongo.dto.AuthorDTO;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 @Document
 public class Post implements Serializable {
@@ -23,7 +22,7 @@ public class Post implements Serializable {
 	private String body;
 	private AuthorDTO author;
 
-	private List<CommentDTO> coments = new ArrayList<>();
+    private List<CommentDTO> comments = new ArrayList<>();
 
 	public Post() {
 	}
@@ -82,11 +81,11 @@ public class Post implements Serializable {
 	}
 
 	public List<CommentDTO> getComments() {
-		return coments;
+        return comments;
 	}
 
 	public void setComemnts(List<CommentDTO> coments) {
-		this.coments = coments;
+        this.comments = coments;
 	}
 
 	@Override
